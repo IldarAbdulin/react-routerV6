@@ -1,0 +1,25 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  footer {
+    padding: 25px 0;
+  }
+  p {
+    padding: 10px 0;
+  }
+  h1 {
+    padding: 10px 0;
+  }
+  a {
+    color: #000;
+  }
+  li {
+    padding: 4px 0;
+    width: 60%;
+    margin: 0 auto;
+    list-style: none;
+    text-align: left;
+  }
+}
