@@ -1,9 +1,13 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react"
 
 function SinglePage() {
-    const {id} = useParams()
+    const {id} = useParams();
+    const navigate = useNavigate();
     const [todo, setTodo] = useState(null)
+
+    const goBack = () => navigate(-1)
+    const goHome = () => navigate('/', {replace: true})
 
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
@@ -13,6 +17,8 @@ function SinglePage() {
 
     return(
         <div>
+            <button onClick={goBack}>Go back</button>
+            <button onClick={goHome}>Go Home</button>
             {todo && (
                 <>
                     <h1>{todo.id}</h1>
