@@ -9,7 +9,8 @@ function Layout() {
 
             <header>
                 <CustomLink to='/home' >Home</CustomLink>
-                <CustomLink to='/todos' >About</CustomLink>  
+                <CustomLink to='/todos' >Todos</CustomLink>  
+                <CustomLink to='/about' >About</CustomLink>  
             </header>
 
             <Outlet />
