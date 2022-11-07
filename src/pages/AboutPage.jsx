@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Link, useLoaderData, useSearchParams, defer, Await } from "react-router-dom"
+import { Link, useLoaderData, useSearchParams, Await, json } from "react-router-dom"
 import BlogFilter from "../components/BlogFilter"
 
 function AboutPage() {
@@ -44,13 +44,22 @@ function AboutPage() {
 
 async function getTodos() {
     const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+
+    if (!res.ok) {
+        throw new Response('', {status: res.status, statusText: 'Not found :('})
+    }
+
     return res.json()
 }
 
 function todoLoader() {
-    return defer({
-        todos: getTodos()
-    })
+    const todos = getTodos();
+    // if (!todos.length) {
+    //     throw json({message: 'Not found :(' , reason: 'Wrong url'}, {status: 404})
+    // }
+    return {
+        todos
+    }
 }
 
 export {AboutPage , todoLoader} 
